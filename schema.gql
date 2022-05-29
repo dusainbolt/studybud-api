@@ -1,0 +1,85 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""The gender of user"""
+enum Gender {
+  FEMALE
+  MALE
+  OTHER
+}
+
+type JWT {
+  createdAt: DateTime
+  exp: DateTime
+  value: String
+}
+
+type Mutation {
+  updateUser(input: UpdateUserInput!): Boolean!
+}
+
+type Query {
+  initData: String!
+  initDataTagDemo: String!
+  searchUser(input: SearchUserInput!): [User!]!
+}
+
+"""The role of user"""
+enum Role {
+  ADMIN
+  CREATOR
+  USER
+}
+
+input SearchUserInput {
+  count: Boolean = true
+  key: String = null
+  limit: Int = null
+  offset: Int = null
+  orderBy: String = ""
+  sortBy: Int = null
+}
+
+"""The SocialType of authentication user"""
+enum SocialType {
+  FACEBOOK
+  GOOGLE
+}
+
+input UpdateUserInput {
+  username: String!
+}
+
+type User {
+  _id: String
+  avatar: String
+  birthday: DateTime
+  createdAt: DateTime
+  email: String
+  firstName: String
+  gender: Gender
+  lastName: String
+  name: String
+  phone: String
+  roles: [Role!]
+  socialId: String
+  socialType: SocialType
+  status: UserStatus
+  tokens: [JWT!]
+  updatedAt: DateTime
+  username: String
+}
+
+"""The status of user"""
+enum UserStatus {
+  ACTIVE
+  BLOCK
+  INACTIVE
+  PAUSE
+}
