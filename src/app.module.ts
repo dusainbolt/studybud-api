@@ -5,7 +5,6 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { MongooseModule } from "@nestjs/mongoose";
 import { ScheduleModule } from "@nestjs/schedule";
 import { AuthModule } from "./auth/auth.module";
-import { environment } from "./environment";
 import { HashModule } from "./hash/hash.module";
 import { HttpModule } from "./http.module";
 import { LogsModule } from "./logs/logs.module";
@@ -18,9 +17,8 @@ import { PluginModule } from "./plugins/plugin.module";
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [environment],
     }),
-    MongooseModule.forRoot(process.env.MONGO_DB_URL, {
+    MongooseModule.forRoot(process.env.DB_URL, {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,

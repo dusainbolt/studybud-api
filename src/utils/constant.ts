@@ -4,7 +4,7 @@ export const Constant = {
     LOCAL: "local",
     JWT_SECRET: "JWT_SECRET",
     APP_KEY: "APP_KEY",
-    EXPIRE_JWT: "EXPIRE_JWT",
+    JWT_EXPIRE: "JWT_EXPIRE",
     FACEBOOk_APP_ID: "FACEBOOk_APP_ID",
     FACEBOOk_APP_SECRET: "FACEBOOk_APP_SECRET",
   },

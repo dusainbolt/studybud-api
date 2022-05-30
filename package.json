@@ -1,7 +1,7 @@
 {
-  "name": "code-memory-server",
+  "name": "studybud-api",
   "version": "1.0.0",
-  "description": "CodeMemory Server repository",
+  "description": "Studybud API project",
   "license": "MIT",
   "engines": {
     "node": "14.17.5"

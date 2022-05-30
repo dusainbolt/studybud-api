@@ -1,4 +1,4 @@
-### CodeMemory Server sample
+### StudyBud API
 
 ### Installation
 
@@ -12,20 +12,20 @@ This example requires docker or a local mongodb installation. If using a local m
 
 There is a `docker-compose.yml` file for starting Docker.
 
-`docker-compose up`
+`docker-compose up dev`
 
 After running the sample, you can stop the Docker container with
 
 `docker-compose down`
 
-### Run the sample
+<!-- ### Run the sample
 
 Then, run Nest as usual:
 
-`npm run start`
+`npm run start` -->
 
-#### Make module
+<!-- #### Make module
 
 `npm i -g @nestjs/cli`
 
-`nest g module models/work && nest g service models/work && nest g resolver models/work`
+`nest g module models/work && nest g service models/work && nest g resolver models/work` -->

@@ -62,7 +62,7 @@ export class AuthService {
       roles: user.roles,
     };
 
-    const dayExp = this.configService.get(Constant.env.EXPIRE_JWT);
+    const dayExp = this.configService.get(Constant.env.JWT_EXPIRE);
     const jwt: JWT = {
       value: this.hashService.signJWT(signJWTData),
       exp: DateHelper.generateExpire(Number(dayExp)).toDate(),
