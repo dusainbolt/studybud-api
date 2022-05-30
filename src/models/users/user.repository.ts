@@ -26,11 +26,11 @@ export class UserRepository {
   }
 
   async findOne(filter: FilterQuery<any> = {}): Promise<UserDocument> {
-    return this.userModel.findOne(filter);
+    return this.userModel.findOne(filter as any);
   }
 
   async findAll(filter: FilterQuery<any> = {}): Promise<UserDocument[]> {
-    return this.userModel.find(filter);
+    return this.userModel.find(filter as any);
   }
 
   // async remove(id: number) {
