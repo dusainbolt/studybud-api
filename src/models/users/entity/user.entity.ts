@@ -26,6 +26,9 @@ export class User {
   avatar?: string;
 
   @Field({ nullable: true })
+  description?: string;
+
+  @Field({ nullable: true })
   phone?: string;
 
   @Field(() => SocialType)

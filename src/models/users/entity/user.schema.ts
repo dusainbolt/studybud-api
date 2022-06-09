@@ -24,6 +24,9 @@ export class UserModel {
   avatar: string;
 
   @Prop()
+  description: string;
+
+  @Prop()
   phone: string;
 
   @Prop({ type: Number, enum: SocialType })

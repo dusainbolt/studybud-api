@@ -1,10 +1,16 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { Length } from "class-validator";
+import { IsOptional, Length } from "class-validator";
 import { MSG } from "src/utils/message";
 
 @InputType()
 export class UpdateUserInput {
   @Field()
-  @Length(1, 18, { message: MSG.validLength })
+  @IsOptional()
+  @Length(1, 100, { message: MSG.validLength })
   username: string;
+
+  @Field()
+  @IsOptional()
+  // @Length(1, 18, { message: MSG.validLength })
+  description: string;
 }

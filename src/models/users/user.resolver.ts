@@ -6,6 +6,9 @@ import { UpdateUserInput } from "./graph/update-user.graph";
 import { Roles, USER_KEY } from "src/auth/roles.guard";
 import { UserDocument } from "./entity/user.schema";
 import { Role } from "./entity/user.enum";
+import { GetUserInput } from "./graph/get-user.graph copy";
+import { Helper } from "src/utils/helper";
+import { MSG } from "src/utils/message";
 @Resolver(User)
 export class UserResolver {
   constructor(private readonly userRepository: UserRepository) {}
@@ -13,6 +16,17 @@ export class UserResolver {
   @Query(() => [User])
   async searchUser(@Args("input") input: SearchUserInput): Promise<User[]> {
     return await this.userRepository.findAll();
+  }
+
+  @Query(() => User)
+  async getUser(@Args("input") input: GetUserInput): Promise<User> {
+    const user = await this.userRepository.findOne({
+      $or: [{ username: input.credential }, { _id: input.credential }],
+    });
+    if (!user) {
+      throw Helper.apolloError(MSG.logic.INVALID_USER);
+    }
+    return user;
   }
 
   @Roles([Role.USER])

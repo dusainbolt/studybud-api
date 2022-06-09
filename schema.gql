@@ -14,6 +14,10 @@ enum Gender {
   OTHER
 }
 
+input GetUserInput {
+  credential: String!
+}
+
 type JWT {
   createdAt: DateTime
   exp: DateTime
@@ -25,6 +29,7 @@ type Mutation {
 }
 
 type Query {
+  getUser(input: GetUserInput!): User!
   initData: String!
   initDataTagDemo: String!
   searchUser(input: SearchUserInput!): [User!]!
@@ -53,6 +58,7 @@ enum SocialType {
 }
 
 input UpdateUserInput {
+  description: String!
   username: String!
 }
 
@@ -61,6 +67,7 @@ type User {
   avatar: String
   birthday: DateTime
   createdAt: DateTime
+  description: String
   email: String
   firstName: String
   gender: Gender
