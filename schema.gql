@@ -7,13 +7,6 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-"""The gender of user"""
-enum Gender {
-  FEMALE
-  MALE
-  OTHER
-}
-
 input GetUserInput {
   credential: String!
 }
@@ -35,13 +28,6 @@ type Query {
   searchUser(input: SearchUserInput!): [User!]!
 }
 
-"""The role of user"""
-enum Role {
-  ADMIN
-  CREATOR
-  USER
-}
-
 input SearchUserInput {
   count: Boolean = true
   key: String = null
@@ -51,42 +37,36 @@ input SearchUserInput {
   sortBy: Int = null
 }
 
-"""The SocialType of authentication user"""
-enum SocialType {
-  FACEBOOK
-  GOOGLE
-}
-
 input UpdateUserInput {
-  description: String!
-  username: String!
+  address: String
+  contact: String
+  description: String
+  gender: Float
+  name: String
+  school: String
+  username: String
 }
 
 type User {
   _id: String
+  address: String
   avatar: String
   birthday: DateTime
+  contact: String
   createdAt: DateTime
   description: String
   email: String
   firstName: String
-  gender: Gender
+  gender: Int
   lastName: String
   name: String
   phone: String
-  roles: [Role!]
+  roles: [Int!]
+  school: String
   socialId: String
-  socialType: SocialType
-  status: UserStatus
+  socialType: Int
+  status: Int
   tokens: [JWT!]
   updatedAt: DateTime
   username: String
-}
-
-"""The status of user"""
-enum UserStatus {
-  ACTIVE
-  BLOCK
-  INACTIVE
-  PAUSE
 }

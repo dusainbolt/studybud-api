@@ -6,7 +6,7 @@ import { UpdateUserInput } from "./graph/update-user.graph";
 import { Roles, USER_KEY } from "src/auth/roles.guard";
 import { UserDocument } from "./entity/user.schema";
 import { Role } from "./entity/user.enum";
-import { GetUserInput } from "./graph/get-user.graph copy";
+import { GetUserInput } from "./graph/get-user.graph";
 import { Helper } from "src/utils/helper";
 import { MSG } from "src/utils/message";
 @Resolver(User)

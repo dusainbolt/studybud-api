@@ -21,7 +21,7 @@ export class Helper {
     data,
   });
 
-  static randUserName = () => `username_${Date.now()}`;
+  static randUserName = () => `user_${Date.now()}`;
 }
 // export class HelperService {
 //   removeBreakLine = (string: String): String => {

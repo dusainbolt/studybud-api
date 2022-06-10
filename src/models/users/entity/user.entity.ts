@@ -1,4 +1,4 @@
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, Int, ObjectType } from "@nestjs/graphql";
 import { JWT } from "./jwt.entity";
 import { Gender, Role, SocialType, UserStatus } from "./user.enum";
 
@@ -29,15 +29,24 @@ export class User {
   description?: string;
 
   @Field({ nullable: true })
+  school?: string;
+
+  @Field({ nullable: true })
+  address?: string;
+
+  @Field({ nullable: true })
   phone?: string;
 
-  @Field(() => SocialType)
+  @Field({ nullable: true })
+  contact?: string;
+
+  @Field(() => Int)
   socialType?: SocialType;
 
   @Field()
   socialId?: string;
 
-  @Field(() => Gender, { nullable: true })
+  @Field(() => Int, { nullable: true })
   gender?: Gender;
 
   @Field({ nullable: true })
@@ -46,10 +55,10 @@ export class User {
   @Field(() => [JWT], { nullable: true })
   tokens?: JWT[];
 
-  @Field(() => [Role], { nullable: true })
+  @Field(() => [Int], { nullable: true })
   roles?: Role[];
 
-  @Field(() => UserStatus, { nullable: true })
+  @Field(() => Int, { nullable: true })
   status?: UserStatus;
 
   @Field({ nullable: true })

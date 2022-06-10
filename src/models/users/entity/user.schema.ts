@@ -27,7 +27,16 @@ export class UserModel {
   description: string;
 
   @Prop()
+  school: string;
+
+  @Prop()
+  address: string;
+
+  @Prop()
   phone: string;
+
+  @Prop()
+  contact: string;
 
   @Prop({ type: Number, enum: SocialType })
   socialType: SocialType;
