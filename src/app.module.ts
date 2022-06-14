@@ -13,6 +13,7 @@ import { ModelsModule } from "./models/models.module";
 import { UsersModule } from "./models/users/user.module";
 import { UserRepository } from "./models/users/user.repository";
 import { PluginModule } from "./plugins/plugin.module";
+import { MailModule } from './mail/mail.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -54,6 +55,7 @@ import { PluginModule } from "./plugins/plugin.module";
     LogsModule,
     AuthModule,
     HashModule,
+    MailModule,
   ],
 })
 export class AppModule {}

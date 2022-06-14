@@ -5,19 +5,19 @@ import { Gender, Role, SocialType, UserStatus } from "./user.enum";
 
 @Schema({ timestamps: true })
 export class UserModel {
-  @Prop()
+  @Prop({ default: null })
   email: string;
 
   @Prop({ unique: true })
   username: string;
 
-  @Prop()
+  @Prop({ default: null })
   name: string;
 
-  @Prop()
+  @Prop({ default: null })
   firstName: string;
 
-  @Prop()
+  @Prop({ default: null })
   lastName: string;
 
   @Prop()
@@ -29,19 +29,22 @@ export class UserModel {
   @Prop()
   school: string;
 
-  @Prop()
+  @Prop({ default: null })
   address: string;
 
-  @Prop()
+  @Prop({ default: null })
   phone: string;
 
-  @Prop()
+  @Prop({ default: null })
+  password: string;
+
+  @Prop({ default: null })
   contact: string;
 
-  @Prop({ type: Number, enum: SocialType })
+  @Prop({ type: Number, enum: SocialType, default: SocialType.SYSTEM })
   socialType: SocialType;
 
-  @Prop()
+  @Prop({ default: null })
   socialId: string;
 
   @Prop({ type: Number, enum: Gender, default: Gender.FEMALE })
@@ -64,7 +67,7 @@ export class UserModel {
   @Prop([{ type: Number, enum: Role }])
   roles: [Role];
 
-  @Prop({ type: Number, enum: UserStatus, default: UserStatus.ACTIVE })
+  @Prop({ type: Number, enum: UserStatus, default: UserStatus.INACTIVE })
   status: UserStatus;
 }
 

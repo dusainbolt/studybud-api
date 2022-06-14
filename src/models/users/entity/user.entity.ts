@@ -38,6 +38,9 @@ export class User {
   phone?: string;
 
   @Field({ nullable: true })
+  password?: string;
+
+  @Field({ nullable: true })
   contact?: string;
 
   @Field(() => Int)

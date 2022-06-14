@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
-import { FilterQuery, Model } from "mongoose";
+import { FilterQuery, Model, QueryOptions } from "mongoose";
 import { Constant } from "src/utils/constant";
 import { User } from "./entity/user.entity";
 import { UserDocument } from "./entity/user.schema";
@@ -9,24 +9,30 @@ import { UserDocument } from "./entity/user.schema";
 export class UserRepository {
   constructor(
     @InjectModel(Constant.schema.USER) public userModel: Model<UserDocument> // private hashService: HashService, // private appLogger: AppLogger
-  ) {
-    // this.appLogger.setContext(UserService.name);
+  ) {}
+
+  async create(data: User): Promise<UserDocument> {
+    return this.userModel.create(data);
   }
 
-  async create(userInfo: User): Promise<UserDocument> {
-    return this.userModel.create(userInfo);
-  }
-
-  updateById(id: number, userInfo: User) {
-    return this.userModel.findByIdAndUpdate(id, userInfo);
+  async updateById(id: number, update: User) {
+    return this.userModel.findByIdAndUpdate(id, update);
   }
 
   async findById(id: string): Promise<User> {
     return this.userModel.findById(id);
   }
 
-  async findOne(filter: FilterQuery<any> = {}): Promise<UserDocument> {
+  async findOne(filter: FilterQuery<User> = {}): Promise<UserDocument> {
     return this.userModel.findOne(filter);
+  }
+
+  async findOneAndUpdate(
+    filter: FilterQuery<User> = {},
+    update: User = {},
+    options: QueryOptions = {}
+  ): Promise<UserDocument> {
+    return this.userModel.findOneAndUpdate(filter, update, options);
   }
 
   async findAll(filter: FilterQuery<any> = {}): Promise<UserDocument[]> {

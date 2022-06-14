@@ -5,17 +5,47 @@ import { UserRepository } from "./user.repository";
 import { UpdateUserInput } from "./graph/update-user.graph";
 import { Roles, USER_KEY } from "src/auth/roles.guard";
 import { UserDocument } from "./entity/user.schema";
-import { Role } from "./entity/user.enum";
+import { Role, SocialType, UserStatus } from "./entity/user.enum";
 import { GetUserInput } from "./graph/get-user.graph";
 import { Helper } from "src/utils/helper";
 import { MSG } from "src/utils/message";
+import { RegisterUserInput } from "./graph/register-user.graph";
+import { UserService } from "./user.service";
+import { MailService } from "src/mail/mail.service";
 @Resolver(User)
 export class UserResolver {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(
+    private readonly userRepository: UserRepository,
+    private readonly userService: UserService,
+    private readonly mailService: MailService
+  ) {}
 
   @Query(() => [User])
   async searchUser(@Args("input") input: SearchUserInput): Promise<User[]> {
     return await this.userRepository.findAll();
+  }
+
+  @Mutation(() => Boolean)
+  async registerUser(
+    @Args("input") input: RegisterUserInput
+  ): Promise<Boolean> {
+    const conditionFilter: User = {
+      email: input.email,
+      socialType: SocialType.SYSTEM,
+    };
+    let user = await this.userRepository.findOne(conditionFilter);
+
+    if (user && user.status === UserStatus.ACTIVE) {
+      throw Helper.apolloError(MSG.logic.ALREADY_USER);
+    } else if (!user) {
+      user = await this.userService.createUserSystem(input);
+    }
+
+    const token = this.userService.signJWTRegister(user);
+    console.log("token: ", token);
+    // await this.mailService.sendUserConfirmation(user, token);
+
+    return true;
   }
 
   @Query(() => User)

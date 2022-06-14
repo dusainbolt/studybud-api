@@ -37,6 +37,7 @@ registerEnumType(Gender, {
 export enum SocialType {
   FACEBOOK,
   GOOGLE,
+  SYSTEM,
 }
 
 registerEnumType(SocialType, {

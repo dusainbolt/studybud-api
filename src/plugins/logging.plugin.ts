@@ -40,8 +40,7 @@ export class LoggingPlugin implements ApolloServerPlugin {
     private hashService: HashService,
     private configService: ConfigService
   ) {
-    this.isLocal =
-      configService.get(Constant.env.NODE_ENV) === Constant.env.LOCAL;
+    this.isLocal = configService.get("NODE_ENV") === Constant.env.LOCAL;
   }
   // get user ip with params headers
   getUserIpAddress(req): String {

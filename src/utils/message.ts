@@ -25,5 +25,9 @@ export class MSG {
       message: "Invalid user",
       code: `${MSG._PREFIX_MSG_LOGIC}_1`,
     },
+    ALREADY_USER: {
+      message: "User already",
+      code: `${MSG._PREFIX_MSG_LOGIC}_2`,
+    },
   };
 }

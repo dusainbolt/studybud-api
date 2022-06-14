@@ -10,8 +10,8 @@ export class HashService {
   private appKey;
 
   constructor(private configService: ConfigService) {
-    this.secret = this.configService.get(Constant.env.JWT_SECRET);
-    this.appKey = this.configService.get(Constant.env.APP_KEY);
+    this.secret = this.configService.get("JWT_SECRET");
+    this.appKey = this.configService.get("APP_KEY");
   }
 
   hashCryptoAES(data: object | string): string {
@@ -36,8 +36,8 @@ export class HashService {
     return bcrypt.compare(message, hash);
   }
 
-  signJWT(data: any): string {
-    return jwt.sign(data, this.secret);
+  signJWT(data: any, expiresIn = this.configService.get("JWT_EXPIRE")): string {
+    return jwt.sign(data, this.secret, { expiresIn });
   }
 
   verifyJWT(token: string) {

@@ -1,18 +1,17 @@
-import { RolesGuard } from "./roles.guard";
-import { UsersModule } from "../models/users/user.module";
 import { Module } from "@nestjs/common";
-import { AuthService } from "./auth.service";
 import { APP_GUARD } from "@nestjs/core";
-import { HashService } from "src/hash/hash.service";
-import { FacebookStrategy } from "./facebook.strategy";
-import { AuthController } from "./auth.controller";
+import { HashModule } from "src/hash/hash.module";
 import { HttpModule } from "src/http.module";
+import { UsersModule } from "../models/users/user.module";
+import { AuthController } from "./auth.controller";
+import { AuthService } from "./auth.service";
+import { FacebookStrategy } from "./facebook.strategy";
+import { RolesGuard } from "./roles.guard";
 
 @Module({
-  imports: [UsersModule, HttpModule],
+  imports: [UsersModule, HttpModule, HashModule],
   providers: [
     AuthService,
-    HashService,
     {
       provide: APP_GUARD,
       useClass: RolesGuard,

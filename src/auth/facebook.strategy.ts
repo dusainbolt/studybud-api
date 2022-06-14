@@ -18,8 +18,8 @@ export class FacebookStrategy extends PassportStrategy(
   ) {
     super(
       {
-        clientID: configService.get(Constant.env.FACEBOOk_APP_ID),
-        clientSecret: configService.get(Constant.env.FACEBOOk_APP_SECRET),
+        clientID: configService.get("FACEBOOk_APP_ID"),
+        clientSecret: configService.get("FACEBOOk_APP_SECRET"),
       },
       async (
         accessToken: string,

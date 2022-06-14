@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "sourceRoot": "src",
+    "assets": ["mail/templates/**/*"],
+    "watchAssets": true,
     "plugins": [
       {
         "name": "@nestjs/graphql",
