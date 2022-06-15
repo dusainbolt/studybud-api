@@ -20,13 +20,13 @@ export class UserModel {
   @Prop({ default: null })
   lastName: string;
 
-  @Prop()
+  @Prop({ default: null })
   avatar: string;
 
-  @Prop()
+  @Prop({ default: null })
   description: string;
 
-  @Prop()
+  @Prop({ default: null })
   school: string;
 
   @Prop({ default: null })

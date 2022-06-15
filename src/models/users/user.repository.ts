@@ -19,7 +19,7 @@ export class UserRepository {
     return this.userModel.findByIdAndUpdate(id, update);
   }
 
-  async findById(id: string): Promise<User> {
+  async findById(id: string): Promise<UserDocument> {
     return this.userModel.findById(id);
   }
 
@@ -39,6 +39,13 @@ export class UserRepository {
     return this.userModel.find(filter);
   }
 
+  async atomicInsert(filter: FilterQuery<User> = {}, data: User) {
+    return await this.findOneAndUpdate(filter, data, {
+      new: true,
+      upsert: true,
+      setDefaultsOnInsert: true,
+    });
+  }
   // async remove(id: number) {
   //   // await this.peopleRepository.delete(id);
   // }

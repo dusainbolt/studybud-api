@@ -8,10 +8,10 @@ import {
 } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { Role } from "src/models/users/entity/user.enum";
+import { Constant } from "src/utils/constant";
 
 export const ROLES_KEY = "roles";
 export const Roles = (roles: Role[]) => SetMetadata(ROLES_KEY, roles);
-export const USER_KEY = "user";
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private reflector: Reflector, private authService: AuthService) {}
@@ -32,13 +32,17 @@ export class RolesGuard implements CanActivate {
       return false;
     }
     // Set Context for user
-    ctx[USER_KEY] = await this.authService.validateToken(headers.authorization);
+    ctx[Constant.context.USER] = await this.authService.validateToken(
+      headers.authorization
+    );
 
     // allow any auth with admin
-    if (ctx[USER_KEY].roles?.includes(Role.ADMIN)) {
+    if (ctx[Constant.context.USER].roles?.includes(Role.ADMIN)) {
       return true;
     }
 
-    return requiredRoles.some((role) => ctx[USER_KEY].roles?.includes(role));
+    return requiredRoles.some((role) =>
+      ctx[Constant.context.USER].roles?.includes(role)
+    );
   }
 }

@@ -9,9 +9,9 @@ export class HashService {
   private secret;
   private appKey;
 
-  constructor(private configService: ConfigService) {
-    this.secret = this.configService.get("JWT_SECRET");
-    this.appKey = this.configService.get("APP_KEY");
+  constructor(private config: ConfigService) {
+    this.secret = this.config.get("JWT_SECRET");
+    this.appKey = this.config.get("APP_KEY");
   }
 
   hashCryptoAES(data: object | string): string {
@@ -36,7 +36,7 @@ export class HashService {
     return bcrypt.compare(message, hash);
   }
 
-  signJWT(data: any, expiresIn = this.configService.get("JWT_EXPIRE")): string {
+  signJWT(data: any, expiresIn = this.config.get("JWT_EXPIRE")): string {
     return jwt.sign(data, this.secret, { expiresIn });
   }
 

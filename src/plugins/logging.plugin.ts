@@ -36,11 +36,8 @@ function getDurationRequest(request): Number {
 export class LoggingPlugin implements ApolloServerPlugin {
   private readonly logger = new Logger(LoggingPlugin.name);
   private isLocal: boolean = true;
-  constructor(
-    private hashService: HashService,
-    private configService: ConfigService
-  ) {
-    this.isLocal = configService.get("NODE_ENV") === Constant.env.LOCAL;
+  constructor(private hashService: HashService, private config: ConfigService) {
+    this.isLocal = config.get("NODE_ENV") === Constant.env.LOCAL;
   }
   // get user ip with params headers
   getUserIpAddress(req): String {
@@ -57,8 +54,7 @@ export class LoggingPlugin implements ApolloServerPlugin {
     const { hash, timestamp } = headers;
     const durationTime = timeServer - timestamp;
     if (
-      hash !==
-        this.hashService.hashMD5Crypto(this.configService.get("API_KEY")) ||
+      hash !== this.hashService.hashMD5Crypto(this.config.get("API_KEY")) ||
       durationTime > 100
     ) {
       throw Helper.apolloError(MSG.system.INVALID_API_KEY);

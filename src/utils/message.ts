@@ -29,5 +29,9 @@ export class MSG {
       message: "User already",
       code: `${MSG._PREFIX_MSG_LOGIC}_2`,
     },
+    NOT_CORRECT_PASSWORD: {
+      message: "Password is not correct",
+      code: `${MSG._PREFIX_MSG_LOGIC}_3`,
+    },
   };
 }

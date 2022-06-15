@@ -17,12 +17,24 @@ type JWT {
   value: String
 }
 
+input LoginUserInput {
+  credential: String!
+  password: String!
+}
+
+type LoginUserOutput {
+  token: String!
+  user: User!
+}
+
 type Mutation {
-  registerUser(input: RegisterUserInput!): Boolean!
+  loginUser(input: LoginUserInput!): LoginUserOutput!
+  registerUser(input: RegisterUserInput!): String!
   updateUser(input: UpdateUserInput!): Boolean!
 }
 
 type Query {
+  authUser: User!
   getUser(input: GetUserInput!): User!
   initData: String!
   initDataTagDemo: String!
@@ -33,6 +45,7 @@ input RegisterUserInput {
   email: String!
   name: String!
   password: String!
+  username: String!
 }
 
 input SearchUserInput {

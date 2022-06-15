@@ -13,13 +13,13 @@ export class FacebookStrategy extends PassportStrategy(
   Constant.imports.FACEBOOK_STRATEGY
 ) {
   constructor(
-    private readonly configService: ConfigService,
+    private readonly config: ConfigService,
     private readonly http: HttpService
   ) {
     super(
       {
-        clientID: configService.get("FACEBOOk_APP_ID"),
-        clientSecret: configService.get("FACEBOOk_APP_SECRET"),
+        clientID: config.get("FACEBOOk_APP_ID"),
+        clientSecret: config.get("FACEBOOk_APP_SECRET"),
       },
       async (
         accessToken: string,

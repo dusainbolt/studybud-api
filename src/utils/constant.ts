@@ -19,4 +19,7 @@ export const Constant = {
   imports: {
     FACEBOOK_STRATEGY: "facebook-token",
   },
+  context: {
+    USER: "user",
+  },
 };

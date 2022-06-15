@@ -12,8 +12,8 @@ registerEnumType(Role, {
 });
 
 export enum UserStatus {
-  ACTIVE,
   INACTIVE,
+  ACTIVE,
   PAUSE,
   BLOCK,
 }

@@ -8,11 +8,11 @@ import { CachingService } from "./caching.service";
     CacheModule.registerAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
+      useFactory: async (config: ConfigService) => ({
         store: redisStore,
-        host: configService.get("REDIS_HOST"),
-        port: configService.get("REDIS_PORT"),
-        ttl: configService.get("CACHE_TTL"),
+        host: config.get("REDIS_HOST"),
+        port: config.get("REDIS_PORT"),
+        ttl: config.get("CACHE_TTL"),
       }),
     }),
   ],

@@ -18,7 +18,7 @@ export class AuthService {
   constructor(
     private userRepository: UserRepository,
     private hashService: HashService,
-    private configService: ConfigService
+    private config: ConfigService
   ) {}
 
   async validateToken(auth: string) {
@@ -62,7 +62,7 @@ export class AuthService {
       roles: user.roles,
     };
 
-    const dayExp = this.configService.get("JWT_EXPIRE");
+    const dayExp = this.config.get("JWT_EXPIRE");
     const jwt: JWT = {
       value: this.hashService.signJWT(signJWTData),
       exp: DateHelper.generateExpire(Number(dayExp)).toDate(),

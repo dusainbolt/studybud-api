@@ -1,12 +1,17 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsEmail, MinLength } from "class-validator";
+import { IsAlphanumeric, IsEmail, Length, MinLength } from "class-validator";
 import { MSG } from "src/utils/message";
 
 @InputType()
 export class RegisterUserInput {
   @Field()
-  @MinLength(5, { message: MSG.validLength })
+  @Length(5, 39, { message: MSG.validLength })
   name: string;
+
+  @Field()
+  @Length(5, 39, { message: MSG.validLength })
+  @IsAlphanumeric()
+  username: string;
 
   @Field()
   @IsEmail()
