@@ -36,8 +36,6 @@ type Mutation {
 type Query {
   authUser: User!
   getUser(input: GetUserInput!): User!
-  initData: String!
-  initDataTagDemo: String!
   searchUser(input: SearchUserInput!): [User!]!
 }
 

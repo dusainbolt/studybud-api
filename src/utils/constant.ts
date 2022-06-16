@@ -15,6 +15,8 @@ export const Constant = {
   },
   schema: {
     USER: "User",
+    TOPIC: "Topic",
+    MISSION: "Mission",
   },
   imports: {
     FACEBOOK_STRATEGY: "facebook-token",

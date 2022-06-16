@@ -28,4 +28,4 @@ Then, run Nest as usual:
 
 `npm i -g @nestjs/cli`
 
-`nest g module models/work && nest g service models/work && nest g resolver models/work` -->
+`nest g module models/standard && nest g service models/standard && nest g resolver models/standard` -->
