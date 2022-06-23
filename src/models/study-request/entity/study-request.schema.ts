@@ -6,23 +6,39 @@ import { Constant } from "src/utils/constant";
 const { ObjectId } = MongooseSchema.Types;
 
 @Schema({ timestamps: true })
-export class MissionModel {
+export class StudyRequestModel {
   @Prop({ required: true })
-  name: string;
+  title: string;
 
   @Prop({ type: ObjectId, ref: Constant.schema.TOPIC })
   topic: string;
 
-  @Prop([{ type: ObjectId, ref: Constant.schema.STANDARD }])
-  standards: string[];
+  @Prop({ type: ObjectId, ref: Constant.schema.MISSION })
+  mission: string;
+
+  @Prop({ type: ObjectId, ref: Constant.schema.STANDARD })
+  standard: string;
 
   @Prop({ type: ObjectId, ref: Constant.schema.USER, required: true })
   owner: string;
+
+  @Prop({ default: null })
+  point: number;
+
+  @Prop({ default: null })
+  pointValue: string;
+
+  @Prop({ default: null })
+  requestDes: string;
+
+  @Prop({ default: null })
+  missionDes: string;
 
   @Prop({ type: Number, enum: StatusOnOff, default: StatusOnOff.ON })
   status: StatusOnOff;
 }
 
-export type MissionDocument = MissionModel & Document;
+export type StudyRequestDocument = StudyRequestModel & Document;
 
-export const MissionSchema = SchemaFactory.createForClass(MissionModel);
+export const StudyRequestSchema =
+  SchemaFactory.createForClass(StudyRequestModel);

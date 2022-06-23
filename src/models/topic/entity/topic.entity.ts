@@ -1,5 +1,5 @@
-import { Field, ObjectType } from "@nestjs/graphql";
-import { StatusOnOff } from "src/models/common.type";
+import { Field, Int, ObjectType } from "@nestjs/graphql";
+import { StatusOnOff } from "src/models/models.enum";
 
 @ObjectType()
 export class Topic {
@@ -12,8 +12,11 @@ export class Topic {
   @Field()
   owner?: string;
 
-  @Field(() => StatusOnOff)
+  @Field(() => Int)
   status?: StatusOnOff;
+
+  @Field(() => [String])
+  missions?: string[];
 
   @Field()
   createdAt?: Date;

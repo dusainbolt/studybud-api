@@ -1,5 +1,26 @@
 import { registerEnumType } from "@nestjs/graphql";
 
+/** COMMON ENUM */
+export enum StatusOnOff {
+  OFF = 0,
+  ON = 1,
+}
+
+registerEnumType(StatusOnOff, {
+  name: "StatusOnOff",
+});
+
+/** STANDARD ENUM */
+export enum PointStandard {
+  INPUT,
+  SELECT,
+}
+
+registerEnumType(PointStandard, {
+  name: "PointStandard",
+});
+
+/** USER ENUM */
 export enum Role {
   USER,
   ADMIN,

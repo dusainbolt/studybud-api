@@ -33,5 +33,9 @@ export class MSG {
       message: "Password is not correct",
       code: `${MSG._PREFIX_MSG_LOGIC}_3`,
     },
+    INVALID_STUDY_REQUEST: {
+      message: "Invalid study request",
+      code: `${MSG._PREFIX_MSG_LOGIC}_4`,
+    },
   };
 }

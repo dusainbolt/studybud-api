@@ -7,7 +7,7 @@ import {
   SetMetadata,
 } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { Role } from "src/models/users/entity/user.enum";
+import { Role } from "src/models/models.enum";
 import { Constant } from "src/utils/constant";
 
 export const ROLES_KEY = "roles";

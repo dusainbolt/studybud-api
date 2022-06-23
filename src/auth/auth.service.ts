@@ -1,14 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { HashService } from "src/hash/hash.service";
+import { Role } from "src/models/models.enum";
 import { JWTData } from "src/models/users/dto/jwt-data.dto";
 import { VerifySocial } from "src/models/users/dto/verify-social.dto";
 import { JWT } from "src/models/users/entity/jwt.entity";
 import { UserSocial } from "src/models/users/entity/user-social.entity";
 import { User } from "src/models/users/entity/user.entity";
-import { Role } from "src/models/users/entity/user.enum";
 import { UserRepository } from "src/models/users/user.repository";
-import { Constant } from "src/utils/constant";
 import { DateHelper } from "src/utils/date";
 import { Helper } from "src/utils/helper";
 import { MSG } from "src/utils/message";

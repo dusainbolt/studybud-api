@@ -15,7 +15,7 @@ import { JWTData } from "src/models/users/dto/jwt-data.dto";
 import { OAuth2Google } from "src/models/users/dto/oauth2-google.dto";
 import { VerifySocial } from "src/models/users/dto/verify-social.dto";
 import { UserSocial } from "src/models/users/entity/user-social.entity";
-import { SocialType, UserStatus } from "src/models/users/entity/user.enum";
+import { SocialType, UserStatus } from "src/models/models.enum";
 import { UserRepository } from "src/models/users/user.repository";
 import { Constant } from "src/utils/constant";
 import { Helper } from "src/utils/helper";

@@ -1,6 +1,6 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql";
 import { JWT } from "./jwt.entity";
-import { Gender, Role, SocialType, UserStatus } from "./user.enum";
+import { Gender, Role, SocialType, UserStatus } from "src/models/models.enum";
 
 @ObjectType()
 export class User {
