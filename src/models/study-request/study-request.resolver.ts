@@ -1,12 +1,24 @@
-import { Args, Context, Mutation, Query, Resolver } from "@nestjs/graphql";
+import {
+  Args,
+  Context,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from "@nestjs/graphql";
 import { FilterQuery } from "mongoose";
 import { Roles } from "src/auth/roles.guard";
 import { Role } from "src/models/models.enum";
 import { Constant } from "src/utils/constant";
 import { Helper } from "src/utils/helper";
 import { MSG } from "src/utils/message";
+import { Mission } from "../mission/entity/mission.entity";
+import { Standard } from "../standard/entity/standard.entity";
+import { Topic } from "../topic/entity/topic.entity";
 import { UserDocument } from "../users/entity/user.schema";
 import { StudyRequest } from "./entity/study-request.entity";
+import { StudyRequestDocument } from "./entity/study-request.schema";
 import {
   CreateStudyRequestInput,
   UpdateStudyRequestInput,
@@ -62,5 +74,23 @@ export class StudyRequestResolver {
       throw Helper.apolloError(MSG.logic.INVALID_STUDY_REQUEST);
     }
     return true;
+  }
+
+  @ResolveField(() => Standard)
+  async standardData(@Parent() studyRequest: StudyRequestDocument) {
+    return (await studyRequest.populate({ path: "standard" }).execPopulate())
+      .standard;
+  }
+
+  @ResolveField(() => Mission)
+  async missionData(@Parent() studyRequest: StudyRequestDocument) {
+    return (await studyRequest.populate({ path: "mission" }).execPopulate())
+      .mission;
+  }
+
+  @ResolveField(() => Topic)
+  async topicData(@Parent() studyRequest: StudyRequestDocument) {
+    return (await studyRequest.populate({ path: "topic" }).execPopulate())
+      .topic;
   }
 }

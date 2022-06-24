@@ -1,5 +1,6 @@
 import { Field, InputType } from "@nestjs/graphql";
-import { IsOptional, MaxLength } from "class-validator";
+import { IsEnum, IsOptional, MaxLength } from "class-validator";
+import { StatusOnOff } from "src/models/models.enum";
 import { MSG } from "src/utils/message";
 
 @InputType()
@@ -28,6 +29,10 @@ export class CreateStudyRequestInput {
   @Field()
   @MaxLength(100, { message: MSG.validLength })
   requestDes: string;
+
+  @Field()
+  @IsEnum(StatusOnOff)
+  status: StatusOnOff;
 
   @Field()
   @MaxLength(50, { message: MSG.validLength })

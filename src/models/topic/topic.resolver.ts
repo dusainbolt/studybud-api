@@ -1,5 +1,4 @@
 import { Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
-import { Constant } from "src/utils/constant";
 import { Mission } from "../mission/entity/mission.entity";
 import { Topic } from "./entity/topic.entity";
 import { TopicDocument } from "./entity/topic.schema";

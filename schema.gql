@@ -9,6 +9,7 @@ input CreateStudyRequestInput {
   pointValue: String
   requestDes: String!
   standard: String!
+  status: Float!
   title: String!
   topic: String!
 }
@@ -109,15 +110,18 @@ type StudyRequest {
   _id: String
   createdAt: DateTime
   mission: String
+  missionData: Mission!
   missionDes: String
   owner: String
   point: Float
   pointValue: String
   requestDes: String
   standard: String
+  standardData: Standard!
   status: Int
   title: String
   topic: String
+  topicData: Topic!
   updatedAt: DateTime
 }
 
@@ -140,6 +144,7 @@ input UpdateStudyRequestInput {
   requestDes: String!
   requestId: String!
   standard: String!
+  status: Float!
   title: String!
   topic: String!
 }
