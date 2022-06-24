@@ -1,4 +1,4 @@
-import { Role } from "../entity/user.enum";
+import { Role } from "src/models/models.enum";
 
 export type JWTData = {
   id: string;

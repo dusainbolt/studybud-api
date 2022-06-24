@@ -5,7 +5,7 @@ import { Helper } from "src/utils/helper";
 import { MSG } from "src/utils/message";
 import { JWTData } from "./dto/jwt-data.dto";
 import { User } from "./entity/user.entity";
-import { Role, SocialType, UserStatus } from "./entity/user.enum";
+import { Role, SocialType, UserStatus } from "src/models/models.enum";
 import { UserDocument } from "./entity/user.schema";
 import { LoginUserInput } from "./graph/login-user.graph";
 import { RegisterUserInput } from "./graph/register-user.graph";

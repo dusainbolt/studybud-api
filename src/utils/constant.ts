@@ -14,9 +14,11 @@ export const Constant = {
     OFFSET: 0,
   },
   schema: {
-    USER: "User",
-    TOPIC: "Topic",
-    MISSION: "Mission",
+    USER: "USER",
+    TOPIC: "TOPIC",
+    MISSION: "MISSION",
+    STANDARD: "STANDARD",
+    STUDY_REQUEST: "STUDY_REQUEST",
   },
   imports: {
     FACEBOOK_STRATEGY: "facebook-token",

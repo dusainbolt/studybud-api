@@ -2,6 +2,18 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input CreateStudyRequestInput {
+  mission: String!
+  missionDes: String!
+  point: Float
+  pointValue: String
+  requestDes: String!
+  standard: String!
+  status: Float!
+  title: String!
+  topic: String!
+}
+
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
@@ -27,15 +39,31 @@ type LoginUserOutput {
   user: User!
 }
 
+type Mission {
+  _id: String
+  createdAt: DateTime
+  name: String
+  owner: String
+  standardData: [Standard!]!
+  standards: [String!]
+  status: Int
+  topic: String
+  updatedAt: DateTime
+}
+
 type Mutation {
+  createStudyRequest(input: CreateStudyRequestInput!): StudyRequest!
   loginUser(input: LoginUserInput!): LoginUserOutput!
   registerUser(input: RegisterUserInput!): String!
+  updateStudyRequest(input: UpdateStudyRequestInput!): Boolean!
   updateUser(input: UpdateUserInput!): Boolean!
 }
 
 type Query {
   authUser: User!
+  getAllTopic: [Topic!]!
   getUser(input: GetUserInput!): User!
+  searchStudyRequest(input: SearchStudyRequestInput!): [StudyRequest!]!
   searchUser(input: SearchUserInput!): [User!]!
 }
 
@@ -46,6 +74,16 @@ input RegisterUserInput {
   username: String!
 }
 
+input SearchStudyRequestInput {
+  count: Boolean = true
+  key: String = null
+  limit: Int = null
+  offset: Int = null
+  orderBy: String = ""
+  sortBy: Int = null
+  userId: String = null
+}
+
 input SearchUserInput {
   count: Boolean = true
   key: String = null
@@ -53,6 +91,62 @@ input SearchUserInput {
   offset: Int = null
   orderBy: String = ""
   sortBy: Int = null
+}
+
+type Standard {
+  _id: String
+  createdAt: DateTime
+  mission: String
+  name: String
+  owner: String
+  point: Float
+  pointData: [String!]
+  pointType: Int
+  status: Int
+  updatedAt: DateTime
+}
+
+type StudyRequest {
+  _id: String
+  createdAt: DateTime
+  mission: String
+  missionData: Mission!
+  missionDes: String
+  owner: String
+  point: Float
+  pointValue: String
+  requestDes: String
+  standard: String
+  standardData: Standard!
+  status: Int
+  title: String
+  topic: String
+  topicData: Topic!
+  updatedAt: DateTime
+}
+
+type Topic {
+  _id: String
+  createdAt: DateTime
+  missionData: [Mission!]!
+  missions: [String!]
+  name: String
+  owner: String
+  status: Int
+  updatedAt: DateTime
+}
+
+input UpdateStudyRequestInput {
+  mission: String!
+  missionDes: String!
+  point: Float
+  pointValue: String
+  requestDes: String!
+  requestId: String!
+  standard: String!
+  status: Float!
+  title: String!
+  topic: String!
 }
 
 input UpdateUserInput {

@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document, Schema as MongooseSchema } from "mongoose";
-import { StatusOnOff } from "src/models/common.type";
+import { StatusOnOff } from "src/models/models.enum";
 import { Constant } from "src/utils/constant";
 
 const { ObjectId } = MongooseSchema.Types;
@@ -9,6 +9,9 @@ const { ObjectId } = MongooseSchema.Types;
 export class TopicModel {
   @Prop({ required: true })
   name: string;
+
+  @Prop([{ type: ObjectId, ref: Constant.schema.MISSION }])
+  missions: string[];
 
   @Prop({ type: ObjectId, ref: Constant.schema.USER, required: true })
   owner: string;

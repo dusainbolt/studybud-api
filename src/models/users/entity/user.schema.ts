@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { JWT } from "./jwt.entity";
-import { Gender, Role, SocialType, UserStatus } from "./user.enum";
+import { Gender, Role, SocialType, UserStatus } from "src/models/models.enum";
 
 @Schema({ timestamps: true })
 export class UserModel {

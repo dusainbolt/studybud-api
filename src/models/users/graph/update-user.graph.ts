@@ -1,7 +1,7 @@
 import { Field, InputType } from "@nestjs/graphql";
 import { IsEnum, IsOptional, Length } from "class-validator";
 import { MSG } from "src/utils/message";
-import { Gender } from "../entity/user.enum";
+import { Gender } from "src/models/models.enum";
 
 @InputType()
 export class UpdateUserInput {

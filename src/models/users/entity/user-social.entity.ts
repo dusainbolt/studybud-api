@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { SocialType } from "./user.enum";
+import { SocialType } from "src/models/models.enum";
 
 @ObjectType()
 export class UserSocial {

@@ -4,6 +4,7 @@ import { MissionResolver } from "./mission.resolver";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Constant } from "src/utils/constant";
 import { MissionSchema } from "./entity/mission.schema";
+import { MissionRepository } from "./mission.repository";
 
 @Module({
   imports: [
@@ -11,6 +12,7 @@ import { MissionSchema } from "./entity/mission.schema";
       { name: Constant.schema.MISSION, schema: MissionSchema },
     ]),
   ],
-  providers: [MissionService, MissionResolver],
+  providers: [MissionService, MissionResolver, MissionRepository],
+  exports: [MissionRepository],
 })
 export class MissionModule {}
