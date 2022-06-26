@@ -55,7 +55,7 @@ type Mutation {
   createStudyRequest(input: CreateStudyRequestInput!): StudyRequest!
   loginUser(input: LoginUserInput!): LoginUserOutput!
   registerUser(input: RegisterUserInput!): String!
-  updateStudyRequest(input: UpdateStudyRequestInput!): Boolean!
+  updateStudyRequest(input: UpdateStudyRequestInput!): StudyRequest!
   updateUser(input: UpdateUserInput!): Boolean!
 }
 
