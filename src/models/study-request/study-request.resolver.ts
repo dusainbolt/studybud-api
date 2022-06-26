@@ -57,23 +57,24 @@ export class StudyRequestResolver {
   }
 
   @Roles([Role.USER])
-  @Mutation(() => Boolean)
+  @Mutation(() => StudyRequest)
   async updateStudyRequest(
     @Args("input") input: UpdateStudyRequestInput,
     @Context(Constant.context.USER) user: UserDocument
-  ): Promise<boolean> {
+  ): Promise<StudyRequest> {
     const studyRequestUpdate =
       await this.studyRequestRepository.findOneAndUpdate(
         {
           owner: user.id,
           _id: input.requestId,
         },
-        input
+        input,
+        { new: true }
       );
     if (!studyRequestUpdate) {
       throw Helper.apolloError(MSG.logic.INVALID_STUDY_REQUEST);
     }
-    return true;
+    return studyRequestUpdate;
   }
 
   @ResolveField(() => Standard)

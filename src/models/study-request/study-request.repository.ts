@@ -23,7 +23,9 @@ export class StudyRequestRepository {
   async findAll(
     filter: FilterQuery<StudyRequest> = {}
   ): Promise<StudyRequestDocument[]> {
-    return await this.studyRequestModel.find(filter);
+    return await this.studyRequestModel
+      .find(filter)
+      .sort({ [Constant.find.ORDER_BY]: Constant.find.DESC });
   }
 
   async findOneAndUpdate(
