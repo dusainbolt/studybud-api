@@ -12,16 +12,16 @@ import { join } from "path";
       transport: {
         host: "smtp.gmail.com",
         port: 587,
-        secure: false,
+        secure: false, // use SSL - TLS
         // pool: true,
         // requireTLS: true,
         auth: {
-          user: "appdu.hotro@gmail.com",
-          pass: "ylnkfupxfeynqprv",
+          user: "dule9xpro@gmail.com",
+          pass: "osgwzqnhanxzsnad",
         },
       },
       defaults: {
-        from: '"Studybud" <noreply@example.com>',
+        from: `no-reply@dule9xpro@gmail.com`,
       },
       template: {
         dir: join(__dirname, "templates"),
