@@ -24,12 +24,18 @@ import {
   UpdateStudyRequestInput,
 } from "./graph/create-study-request.graph";
 import { SearchStudyRequestInput } from "./graph/search-study-request";
+import {
+  SearchStudybudInput,
+  SearchStudybudOutput,
+} from "./graph/search-studybud";
 import { StudyRequestRepository } from "./study-request.repository";
+import { StudyRequestService } from "./study-request.service";
 
 @Resolver(StudyRequest)
 export class StudyRequestResolver {
   constructor(
-    private readonly studyRequestRepository: StudyRequestRepository
+    private readonly studyRequestRepository: StudyRequestRepository,
+    private readonly studyRequestService: StudyRequestService
   ) {}
 
   @Query(() => [StudyRequest])
@@ -42,6 +48,13 @@ export class StudyRequestResolver {
       }),
     };
     return await this.studyRequestRepository.findAll(conditions);
+  }
+
+  @Query(() => [SearchStudybudOutput])
+  async searchStudybud(
+    @Args("input") input: SearchStudybudInput
+  ): Promise<SearchStudybudOutput[]> {
+    return await this.studyRequestService.searchStudybud(input);
   }
 
   @Roles([Role.USER])

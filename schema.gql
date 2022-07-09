@@ -64,6 +64,7 @@ type Query {
   getAllTopic: [Topic!]!
   getUser(input: GetUserInput!): User!
   searchStudyRequest(input: SearchStudyRequestInput!): [StudyRequest!]!
+  searchStudybud(input: SearchStudybudInput!): [SearchStudybudOutput!]!
   searchUser(input: SearchUserInput!): [User!]!
 }
 
@@ -82,6 +83,21 @@ input SearchStudyRequestInput {
   orderBy: String = ""
   sortBy: Int = null
   userId: String = null
+}
+
+input SearchStudybudInput {
+  gender: Float = null
+  limit: Int = null
+  mission: String = null
+  offset: Int = null
+  point: [Float!] = null
+  pointValue: String = null
+  standard: String = null
+  topic: String = null
+}
+
+type SearchStudybudOutput {
+  user: User!
 }
 
 input SearchUserInput {
